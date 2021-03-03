@@ -1,0 +1,43 @@
+//url = document.URL
+var url = 'https://limnuz.github.io/index.html?channel="https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1"&link=http://duckduckgo.com'
+
+function jsURL(url){
+    //Separa o conteúdo entre aspas(convenciona-se ser endereços web com "?", "&" e "=") e os codifica em base-64 para não misturar com o resto da string
+    url.split('"')
+    for(i in url){
+        if(i%2 != 0){
+            url[i] = window.btoa(`"${url[i]}"`)
+        }
+    }
+
+    //Reune novamente a string depois de removidas as aspas("") e codificados os endereços
+    var temp = ""
+    for(i in url){
+        temp += url[i]
+    }
+
+    url = temp.split("?")[1]
+    
+    //deixa os parametros em formato de texto para ser convertido em JSON
+    url = url.split("=")
+    temp = '{'
+    for(var i = 0; i < url.length; i+2){
+        if(url[i+1].indexOf('"') == -1){
+            temp += `"${url[i]}:${url[i+1]},"`
+        } else {
+            temp += `"${url[i]}:${window.atob(url[i+1])},"`
+        }
+    }
+    url = temp.substring(0, temp.length - 1) + "}"
+
+    url = JSON.parse(url)
+
+    return url
+}
+
+url = jsURL(url)
+console.log(url.channel)
+console.log(url.link)
+
+
+//https://limnuz.github.io/index.html?channel="https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1"&link=http://duckduckgo.com
