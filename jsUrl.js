@@ -4,7 +4,7 @@
 
 
 
-export default function jsUrl(url, separator='||'){
+export default function jsURL(url, separator='||'){
     //separator: separador usado na URL para separar parâmetros que possam conter os caracteres "?", "&" e "="), por padão são aspas duplas, mas pode ser substituido por outros simbolos conforme necessidade
     
     if(url.indexOf("?") == -1){
