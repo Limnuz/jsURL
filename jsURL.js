@@ -1,8 +1,10 @@
 //url = document.URL
-var url = 'https://limnuz.github.io/index.html?channel=##https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1##&link=http://duckduckgo.com'
+//var url = 'https://limnuz.github.io/index.html?channel=##https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1##&link=http://duckduckgo.com'
 //var url = 'https://limnuz.github.io/index.html?channel=##https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1##'
 
-function jsURL(url, separator='"'){
+
+
+export default function jsURL(url, separator='||'){
     //separator: separador usado na URL para separar parâmetros que possam conter os caracteres "?", "&" e "="), por padão são aspas duplas, mas pode ser substituido por outros simbolos conforme necessidade
     
     if(url.indexOf("?") == -1){
