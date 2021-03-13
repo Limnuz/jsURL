@@ -1,7 +1,7 @@
 //url = document.URL
 //var url = 'https://limnuz.github.io/index.html?channel=##https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1##& link=http://duckduckgo.com'
 //var url = 'https://limnuz.github.io/index.html?channel=##https://www.youtube.com/channel/UCwJchClzCtxlv8QFGH6pjRQ?sub_confirmation=1##'
-var url = "http://127.0.0.1:5500/link.html?text=||Clique Aqui||&link1=||www.google.com.br||&link2=||www.duckduckgo.com||&time=1614996822797"
+var url = "http://127.0.0.1:5500/link.html?text=||Clique Aqui||&link1=||www.google.com.br?teste=oi&a=2||&link2=||www.duckduckgo.com||&time=1614996822797"
 
 
 
@@ -19,7 +19,7 @@ function jsURL(url, separator='||'){
     for(var i in url){
         if(i%2 != 0){
             
-            url[i] = separator + window.encodeURI(url[i]) + separator
+            url[i] = separator + window.encodeURIComponent(url[i]) + separator
             
         }
     }
@@ -54,7 +54,7 @@ function jsURL(url, separator='||'){
             temp += `"${url[i]}":"${url[i+1]}",`
         } else {
             
-            temp += `"${url[i]}":"${window.decodeURI(url[i+1].split(separator)[1])}",`
+            temp += `"${url[i]}":"${window.decodeURIComponent(url[i+1].split(separator)[1])}",`
         }
     }
     
